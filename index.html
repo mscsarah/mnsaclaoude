@@ -1086,6 +1086,8 @@ function switchView(id, btn) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
   document.querySelectorAll('.ptab').forEach(t => t.classList.remove('on'));
   document.querySelectorAll('.nb-link').forEach(l => l.classList.remove('on'));
+
+  const API_KEY = "AIzaSyAuCHI7SC83P7fFXUdyTyD1sWlbMKEM5Jk";
   
   const viewMap = {'home':'vhome','exam-sel':'vexam-sel','dash':'vdash'};
   const viewId = viewMap[id] || 'v'+id;
