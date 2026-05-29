@@ -98,7 +98,8 @@ body{font-family:'Cairo',sans-serif;color:var(--tx);min-height:100vh}
 .lo-txt{color:white;font-size:14px;font-weight:600}
 
 /* ===== INTRO ===== */
-#s-intro{background:rgba(0,0,0,.72);backdrop-filter:blur(8px);position:fixed;inset:0;z-index:200;align-items:center;justify-content:center;padding:20px}
+#s-intro{display:none;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);position:fixed;inset:0;z-index:200;align-items:center;justify-content:center;padding:20px}
+#s-intro.on{display:flex}
 .intro-box{background:white;border-radius:22px;padding:34px 30px;max-width:440px;width:100%;text-align:center}
 .intro-icon{font-size:46px;margin-bottom:12px}
 .intro-tag{display:inline-block;background:var(--pl);color:var(--p);font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:10px}
@@ -614,6 +615,7 @@ async function startExam() {
 
 async function beginExam() {
   hide('s-intro');
+  hide('s-setup');
   // حمّل ملف الأجوبة النموذجية لهذه السنة + الملزمة (بالخلفية)
   (async () => {
     try { S.pdfAnswers = await fetchPDF(`${GITHUB_BASE}answers/${S.sub}_${S.year}_answers.pdf`); } catch(e){}
@@ -623,6 +625,7 @@ async function beginExam() {
   show('s-exam');
   startTimer();
   renderQ();
+  window.scrollTo(0,0);
 }
 
 // ===== TIMER =====
